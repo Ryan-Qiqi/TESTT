@@ -1,0 +1,197 @@
+
+
+
+<!doctype html>
+
+<html lang="en" data-bs-theme="light">
+    <head>
+<Style> 
+
+
+
+</Style>      
+        <title>Registro de llegada</title>
+        <!-- Required meta tags -->
+        <meta charset="utf-8" />
+        <meta nombre="viewport" content="width=device-width, initial-scale=1" />
+
+        <!-- Bootstrap CSS v5.3.8 -->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+            crossorigin="anonymous"
+        />
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/css/alertify.min.css"/>
+<!-- Default theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/css/themes/default.min.css"/>
+      
+
+        <script src="jquery-4.0.0.js"></script>
+    
+    </head>
+<style>
+@font-face {
+    font-family: 'Unigeo 32';
+    src: url('/unigeo-font-family.oft') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+.aja{
+  position:relative;
+    /* min-height:100vh; */
+    background-image: url("/img/Ualettlogo.png")   no-repeat center right / cover;
+    display:flex;
+    justify-content: center;
+    width: 100%;
+    height: 70%;
+}
+
+ .aja::before{
+    content:"";
+    position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,0) 35%);
+    pointer-events:none;
+  }
+  
+
+body{
+  
+     font-family: 'Unigeo 32', sans-serif
+}
+
+.imagen{
+  display: flex;
+  height: 90px;
+}
+.blanco{
+ color: rgb(0 82 208)
+}
+
+
+
+</style>
+    <body class=".bg.dark">
+      <header>
+        <nav class="navbar bg-primary ">
+          <div class="container-fluid">
+            <a class="navbar-brand">
+              <image src="/img/Ualett_Isotipo.png" class='imagen'></image> 
+            </a>
+            <a class="icon-link icon-link-hover" style="--bs-link-hover-color-rgb: 255, 255, 255;"  href="dashboard.html">
+        
+         <h1 class="blanco"> Dashboard </h1>
+            </a>
+          </div>
+        </nav>
+         <section class="aja"> 
+          <image src="/img/Ualettlogo.png" class="aja"></image>
+         </section>  
+
+        </header>
+
+        
+        <!-- <main>
+
+
+
+       <div class="modal fade" id="modalarticle" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header bg-dark text-light">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Registrarse</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="mb-3">
+                    <label for="nombre" class="col-form-label">nombre:</label>
+                    <input type="text" class="form-control" id="nombre">
+                  </div>
+                  <div class="mb-3">
+                    <label for="cedula" class="col-form-label">Cedula:</label>
+                    <input type="number" class="form-control" id="cedula">
+                  </div>
+                  <div class="mb-3">
+                    <label for="email" class="col-form-label">Email:</label>
+                    <input type="text" class="form-control" id="email">
+                  </div>
+           
+                  
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary"   id="botoncrear" onclick="CreateData()">Crear</button>
+                     <button type="button" class="btn btn-primary"  id="botoneditar"   onclick="Edit()">Editar</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div> -->
+
+ <form>
+                  <div class="form-row">
+                  <div class="col">
+                    <label for="nombre" class="col-form-label">nombre:</label>
+                    <input type="text" class="form-control" id="nombre" placeholder="Nombre completo">
+                  </div>
+                  <div class="col">
+                    <label for="cedula" class="col-form-label">Cedula:</label>
+                    <input type="number" class="form-control" id="cedula" placeholder="Cedula">
+                  </div>
+                  <div class="col" >
+                    <label for="email" class="col-form-label">Email:</label>
+                    <input type="text" class="form-control" id="email" placeholder="ejemplo@gmail.com">
+                  </div>
+                </div>
+           </form>
+
+<br>
+<br>      
+              <button type="button" class="btn btn-primary"   id="botoncrear" onclick="CreateData()" >Crear</button>
+
+<!-- <table class="table table-light table-bordered"> 
+  <thead>
+   
+    <button type="button" class="btn btn-dark" data-bs-toggle="modal" id="botonidk">Registro</button>
+    
+   <tr class="text-center">
+                <th scope="col" class="visually-hidden">ID</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Cedula</th>
+                <th scope="col">Email</th>
+                <th scope="col">Hora_llegada</th> 
+                <th scope="col">Accesibilidad</th> 
+                
+                
+            </tr>
+  </thead>
+  <tbody>
+    </tr>
+    <tr>
+    
+    </tr>
+    <tr>
+    
+    </tr>
+  </tbody>
+</table> -->
+
+            
+        </main>
+        <footer>
+         
+        </footer>
+        <!-- Bootstrap JavaScript Bundle (includes Popper) -->
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+            crossorigin="anonymous"
+        ></script>
+<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/alertify.min.js"></script>
+        <script src="script.js"></script>
+    </body>
+</html>
