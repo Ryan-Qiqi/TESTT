@@ -18,7 +18,15 @@ const botoncrearrr = document.getElementById("botoncrear")
 const toditoo = document.querySelectorAll("input")
 const fecha = new Date()
   const modalarticle = new bootstrap.Modal(document.getElementById('modalarticle'))
+const pag1 = document.getElementById('formulariosi')
+const pag2 = document.getElementById('Registrate')
 
+console.log(pag1)
+  const cambiarpantalla1 = ()  =>{
+     pag1.hidden=false
+     pag2.hidden=true
+   console.log("hola")  
+  }
 const formatter = new Intl.DateTimeFormat('en-US', {
   year: 'numeric',
   month: '2-digit',
@@ -92,7 +100,7 @@ const CreateData =  async () => {
     nombre: document.getElementById ('nombre').value,
     cedula: document.getElementById ('cedula').value,
     email: document.getElementById ('email').value,
-    hora_llegada: formattedDate
+    hora_llegada: new Date()
   }
   
   try {
@@ -137,7 +145,7 @@ const CreateData =  async () => {
         
         
         
-        resultados += `<tr class="text-center">
+        resultados += `<tr class="text-center" >
         <td class="visually-hidden">${element.id}</td>
         <td>${element.nombre ?? "nombre default"}</td>
         <td>${element.cedula ?? ""}</td>
@@ -153,8 +161,10 @@ const CreateData =  async () => {
         
         
       })
-      contenedor.innerHTML = resultados
-      
+  
+      if (contenedor !== null){
+        contenedor.innerHTML = resultados
+      }
       
     }
     const on = (random, event, selector, handler ) => {
@@ -170,9 +180,7 @@ const CreateData =  async () => {
     on(document, 'click', '#eliminar', e =>{
       const fila = e.target.parentNode.parentNode
       const ID = fila.firstElementChild.innerHTML
-      if (e.target.textContent === "Eliminar") {e.target.textContent = 'Eliminando'
-        e.target.disabled = true;
-      }
+   
       console.log("BORRADO");
       
       

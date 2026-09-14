@@ -31,30 +31,96 @@
     
     </head>
 <style>
+
+
 @font-face {
     font-family: 'Unigeo 32';
     src: url('/unigeo-font-family.oft') format('opentype');
     font-weight: normal;
     font-style: normal;
 }
+#emails, #nombres, #cedulas{
+  font-size: 25px;
+  border-radius: 50%;
+}
+ #nombre, #cedula, #email{
+  font-size: 30px;
+    border-radius: 60px;
+   padding-bottom: 1px;
+   width: 500px;
+   margin-bottom: 55px;
+  
+ }
+ html, body {
+  background-image: url('/img/xeeupj450uab1\ \(1\).webp') ;
+  background-size: cover;
+  background-position: center;
+  
 
+min-height: 100vh;
+ max-height: 100%;
+ }
+
+ 
 #messi{
-  padding-left: 190px;
-  padding-right: 190px;
+  margin-top: 80px;
+  padding-left: 160px;
+  padding-right: 160px;
+
 }
 #botoncrear{
- margin-left: 190px;
+ margin-left: 160px;
+font-size: 30px;
+padding-right: 30px;
+padding-left: 30px ;
 
 }
 
-.aja{
-  position:relative;
-    /* min-height:100vh; */
-    background-image: url("/img/Ualettlogo.png")   no-repeat center right / cover;
+#minav{
+    background-color: rgb(0, 0, 151);
+    max-width: 100%;
+    margin-top: 5%;
+    margin-left:10% ;
+    margin-right: 10%;
+    height:110px;
+    border-radius: 20px;
+}
+
+#imagen{
+  height: 350px;
+  max-width:100% ;
+
+
+}
+
+#formularios{
+  background-color: rgb(255, 255, 255);
+ 
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+border-radius: 20px;
+margin-right: 10px;
+margin-left: 10px;
+}
+#forumariosi button{
+  display: flex;
+  align-items: center;
+}
+#formulariosi{
+padding-top:20px;
+padding-right: 10px;
+padding-left: 10px;
+
+padding-bottom: 50px;
+}
+
+/* .aja{
+
+    height:80vh;
+   
     display:flex;
     justify-content: center;
     width: 100%;
-    height: 70%;
+
 }
 
  .aja::before{
@@ -62,46 +128,67 @@
     position:absolute;inset:0;
     background:linear-gradient(180deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,0) 35%);
     pointer-events:none;
-  }
+  } */
   
 
 body{
   
      font-family: 'Unigeo 32', sans-serif
 }
+#footer{
+  height: 10%;
+  width: 100%;
+
+}
 
 .imagen{
   display: flex;
   height: 90px;
+  width: 50px;
 }
 .blanco{
- color: rgb(0 82 208)
+ color: rgb(0, 48, 119)
 }
+#navbarrr{
+  background-color: rgb(0, 0, 151);
+}
+#Registrate{
 
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
 
+  align-items: center;
+  gap: 50px;
+
+}
+#Registrate img{
+  height: 250px;
+  
+}
+#Registrate button
+{
+  border-radius: 80px;
+height: 80px;
+width: 300px;
+font-size:40px;
+}
 
 </style>
     <body class=".bg.dark">
       <header>
-        <nav class="navbar bg-primary ">
-          <div class="container-fluid">
-            <a class="navbar-brand">
-              <image src="/img/Ualett_Isotipo.png" class='imagen'></image> 
-            </a>
-            <a class="icon-link icon-link-hover" style="--bs-link-hover-color-rgb: 255, 255, 255;"  href="dashboard.html">
-        
-         <h1 class="blanco"> Dashboard </h1>
-            </a>
-          </div>
-        </nav>
+       <nav id="minav"> 
+
+       </nav>
+       
          <section class="aja"> 
-          <image src="/img/Ualettlogo.png" class="aja"></image>
+          <image  class="aja"></image>
          </section>  
 
         </header>
 
         
-        <!-- <main>
+        
 
 
 
@@ -114,7 +201,7 @@ body{
               </div>
               <div class="modal-body">
                 <form>
-                  <div class="mb-3">
+                  <!-- <div class="mb-3">
                     <label for="nombre" class="col-form-label">nombre:</label>
                     <input type="text" class="form-control" id="nombre">
                   </div>
@@ -132,34 +219,48 @@ body{
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-primary"   id="botoncrear" onclick="CreateData()">Crear</button>
-                     <button type="button" class="btn btn-primary"  id="botoneditar"   onclick="Edit()">Editar</button>
+                     <button type="button" class="btn btn-primary"  id="botoneditar"   onclick="Edit()">Editar</button> -->
                 </form>
               </div>
             </div>
           </div>
         </div>
-    </div> -->
+    </div>
 
- <form>
-                  <div class="form-row" id="messi">
-                  <div class="col">
-                    <label for="nombre" class="col-form-label">nombre:</label>
-                    <input type="text" class="form-control" id="nombre" placeholder="Nombre completo">
-                  </div>
-                  <div class="col">
-                    <label for="cedula" class="col-form-label">Cedula:</label>
-                    <input type="number" class="form-control" id="cedula" placeholder="Cedula">
-                  </div>
-                  <div class="col" >
-                    <label for="email" class="col-form-label">Email:</label>
-                    <input type="text" class="form-control" id="email" placeholder="ejemplo@gmail.com">
-                  </div>
-                </div>
-           </form>
+    <div  id="formularios">
 
-<br>
-<br>      
-              <button type="button" class="btn btn-primary"   id="botoncrear" onclick="CreateData()" >Crear</button>
+
+      <div id="Registrate" >
+<img src="/img/unnamed.webp">
+<button
+  type="button"
+  class="btn btn-primary"
+id="boton4" onclick="cambiarpantalla1()">
+  Registrate
+</button>
+
+      </div>
+      
+      <form  id="formulariosi" hidden>
+        <div class="form-row" id="messi">
+          <div class="col">
+            <label for="nombre" id="nombres" class="col-form-label">Name:</label>
+            <input type="text" class="form-control" id="nombre" placeholder="Full Name">
+          </div>
+          <div class="col" id="segundo">
+            <label for="cedula" id="cedulas" class="col-form-label">ID:</label>
+            <input type="number" class="form-control" id="cedula" placeholder="Your ID">
+          </div>
+          <div class="col" id="tercero" >
+            <label for="email" id= "emails" class="col-form-label">Gmail:</label>
+            <input type="text" class="form-control" id="email" placeholder="example@example.com">
+          </div>
+          <button type="button" class="btn btn-primary"   id="botoncrear" onclick="CreateData()" >Create</button>
+        </div>
+      </form>
+      <!-- <img src="img/Ualettlogo.png" id="imagen"> -->
+    </div>
+   
 
 <!-- <table class="table table-light table-bordered"> 
   <thead>
@@ -190,8 +291,9 @@ body{
 
             
         </main>
-        <footer>
-         
+        
+        <footer id="footer">
+      
         </footer>
         <!-- Bootstrap JavaScript Bundle (includes Popper) -->
         <script
