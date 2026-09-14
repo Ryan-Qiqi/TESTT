@@ -17,6 +17,7 @@ const hora_llegada = document.getElementById('hora_llegada')
 const botoncrearrr = document.getElementById("botoncrear")
 const toditoo = document.querySelectorAll("input")
 const fecha = new Date()
+  const modalarticle = new bootstrap.Modal(document.getElementById('modalarticle'))
 
 const formatter = new Intl.DateTimeFormat('en-US', {
   year: 'numeric',
@@ -213,12 +214,12 @@ const CreateData =  async () => {
       const nameform = fila.children[1].innerHTML
       const cedulas = fila.children[2].innerHTML
       const emails = fila.children[3].innerHTML
-      const hora_llegadas = fila.children[4].innerHTML
+   
       idForm = ID
       nombre.value = nameform
       cedula.value = cedulas
       email.value = emails
-      hora_llegada.value = hora_llegadas
+
       
       opcion = 'editar'
       console.log("BORRADO");
@@ -232,12 +233,11 @@ const CreateData =  async () => {
           nombre: document.getElementById ('nombre').value,
           cedula: document.getElementById ('cedula').value,
           email: document.getElementById ('email').value,
-          hora_llegada: document.getElementById ('hora_llegada').value
+          hora_llegada: formattedDate
         }
-        
-        modalarticle.hide()
-        consultingdata()
-        // await consultingdata(); 
+      
+     modalarticle.hide()
+        consultingdata(); 
         const response = await fetch('http://localhost:8080/registros/'+idForm,{
           method:"PUT",
           headers:{
@@ -247,10 +247,11 @@ const CreateData =  async () => {
             nombre: algonuevo.nombre,
             cedula: algonuevo.cedula,
             email: algonuevo.email,
-            hora_llegada: new Date()
+          hora_llegada: algonuevo.hora_llegada
+
             
           })})
-          
+     
           console.log('ok')
           const data = await response.json();
           
@@ -259,6 +260,7 @@ const CreateData =  async () => {
           return data
         } catch (error) {
           console.log(error)
+          
         }
       }
       

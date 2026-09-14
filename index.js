@@ -91,7 +91,17 @@ app.put('/registros/:id', async (req, res)=> {
 
 if (!cedula || !nombre || !email || !hora_llegada) {
     return res.status(400).json({ error: 'Faltan campos requeridos' });
+    
   }
+
+  if (typeof cedula !== 'string' || !/^[0-9]{11}$/.test(cedula)) {
+
+    return res.status(400).json({
+      error:
+      'La cédula debe contener exactamente 11 dígitos, sin guiones, espacios ni letras.'
+    });
+  }
+  
 
 
 })
