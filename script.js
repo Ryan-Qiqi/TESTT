@@ -18,7 +18,6 @@ const hora_llegada = document.getElementById('hora_llegada')
 const botoncrearrr = document.getElementById("botoncrear")
 const toditoo = document.querySelectorAll("input")
 const fecha = new Date()
-  const modalarticle = new bootstrap.Modal(document.getElementById('modalarticle'))
 const pag1 = document.getElementById('formulariosi')
 const pag2 = document.getElementById('Registrate')
 
@@ -106,7 +105,7 @@ const CreateData =  async () => {
     email: document.getElementById ('email').value,
     hora_llegada: new Date()
   }
-  
+  const firma = canvas.toDataURL("image/png");
   try {
     const response = await fetch('http://localhost:8080/registros',{
       method:"POST",
@@ -114,7 +113,7 @@ const CreateData =  async () => {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        firma: imagenBase64,
+        firma: firma,
         nombre: algonuevo.nombre,
         cedula: algonuevo.cedula,
         email: algonuevo.email,
@@ -227,28 +226,23 @@ const CreateData =  async () => {
     on(document, 'click', '#editar', e =>{
       modalarticle.show()
       
-      console.log(toditoo)
-      console.log(cedula)
-      
-      if (opcion ='editar'){
-        document.querySelector("#botoncrear").classList.add("visually-hidden")
-        document.querySelector("#botoneditar").classList.remove("visually-hidden")
-      }
-      
+ 
+
       
       const fila = e.target.parentNode.parentNode
       const ID = fila.firstElementChild.innerHTML
       const nameform = fila.children[1].innerHTML
       const cedulas = fila.children[2].innerHTML
       const emails = fila.children[3].innerHTML
-   
+   console.log(ID)
+
       idForm = ID
       nombre.value = nameform
       cedula.value = cedulas
       email.value = emails
 
       
-      opcion = 'editar'
+   
       console.log("BORRADO");
       
     })
@@ -260,7 +254,7 @@ const CreateData =  async () => {
           nombre: document.getElementById ('nombre').value,
           cedula: document.getElementById ('cedula').value,
           email: document.getElementById ('email').value,
-          hora_llegada: formattedDate
+         
         }
       
      modalarticle.hide()
@@ -274,8 +268,7 @@ const CreateData =  async () => {
             nombre: algonuevo.nombre,
             cedula: algonuevo.cedula,
             email: algonuevo.email,
-          hora_llegada: algonuevo.hora_llegada
-
+     
             
           })})
      
@@ -345,4 +338,3 @@ document.getElementById("botoncrear").addEventListener("click", () => {
   ctx.clearRect(0, 0, canvas.width, canvas.height);})
       
 
-  const imagenBase64 = canvas.toDataURL("image/png");

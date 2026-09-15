@@ -12,7 +12,7 @@ cedula TEXT NOT NULL UNIQUE,
 nombre TEXT NOT NULL, 
 email TEXT NOT NULL UNIQUE, 
 hora_llegada TEXT NOT NULL,
-firma_base64 TEXT NOT NULL
+firma TEXT NOT NULL
 )
 
 
