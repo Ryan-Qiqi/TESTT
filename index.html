@@ -135,7 +135,7 @@ padding-bottom: 50px;
 transition: visibility 0s 0.5s, opacity 0.5s linear;
  background-color: rgb(255, 255, 255);
  
-  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);
+  /* box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3); */
 border-radius: 20px;
 margin-right: 10px;
 margin-left: 55px;
@@ -211,7 +211,7 @@ height: 80px;
 width: 300px;
 font-size:40px;
 }
-.modal{ 
+#modals2{ 
   position:fixed;
   inset:0;
   background-color: white;
@@ -220,17 +220,16 @@ font-size:40px;
   justify-content: center;
   opacity: 0;
   transition: opacity 0.3s ease;
-  z-index:10
-
-}
-.modal.visible{
+  z-index:10 
+ }
+#modals2.visible{
   opacity: 1;
 }
-.modal.oculto{
+#modals2.oculto{
   pointer-events:none;
   
 }
-.modal-lacaja{
+#modals2-lacaja{
   background:white;
   padding: 24px 32;
   border-radius:8px;
@@ -238,7 +237,7 @@ font-size:40px;
   transform: scale(0.9);
   transition:transform 0.3 ease;
 }
-.modal.visible.modal-lacaja{
+.modals2.visible.modal-lacaja{
   transform: scale 1;
 }
 
@@ -333,6 +332,11 @@ id="boton47">
             <label for="email" id= "emails" class="col-form-label">Gmail:</label>
             <input type="text" class="form-control" id="email" placeholder="example@example.com">
           </div>
+
+<canvas id="firmaconv" width="400" height="200" style="border:1px solid #000;"></canvas>
+
+
+          
           <button type="button" class="btn btn-primary"   id="botoncrear" onclick="CreateData()" >Create</button>
         </div>
       </form>

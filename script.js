@@ -114,6 +114,7 @@ const CreateData =  async () => {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
+        firma: imagenBase64,
         nombre: algonuevo.nombre,
         cedula: algonuevo.cedula,
         email: algonuevo.email,
@@ -290,3 +291,58 @@ const CreateData =  async () => {
         }
       }
       
+
+      let pintando = false
+const canvas = document.getElementById('firmaconv')
+const ctx = canvas.getContext("2d");
+
+
+      canvas.addEventListener("mousedown", () => pintando = true);
+      canvas.addEventListener('mouseup', () => {pintando = false; ctx.beginPath();})
+      canvas.addEventListener("mousemove", dibujar);
+      canvas.addEventListener("touchstart", (e) => {
+  pintando = true;
+  dibujar(e);
+}, { passive: false }); 
+
+canvas.addEventListener("touchend", () => {
+  pintando = false;
+  ctx.beginPath();
+});
+
+canvas.addEventListener("touchmove", dibujar, { passive: false });
+
+
+
+      function dibujar(e) {
+
+if (!pintando) return;
+    e.preventDefault(); 
+
+
+  const rect = canvas.getBoundingClientRect();
+  let x, y;
+
+  if (e.touches && e.touches.length > 0) {
+    
+    x = e.touches[0].clientX - rect.left;
+    y = e.touches[0].clientY - rect.top;
+  } else {
+    
+    x = e.offsetX;
+    y = e.offsetY;
+  }
+
+ 
+  ctx.lineTo(x, y);
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.moveTo(x, y);
+      }
+    
+
+document.getElementById("botoncrear").addEventListener("click", () => {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);})
+      
+
+  const imagenBase64 = canvas.toDataURL("image/png");

@@ -12,8 +12,8 @@ app.use(express.json());
 
 
 function validarRegistro(req, res, next) {
-  const { cedula, nombre, email, hora_llegada } = req.body || {};
-  const campos = [cedula, nombre, email, hora_llegada];
+  const { cedula, nombre, email, hora_llegada, firma_base64 } = req.body || {};
+  const campos = [cedula, nombre, email, hora_llegada, firma_base64 ];
 
   const faltanCampos = campos.some(
     (valor) =>
@@ -37,7 +37,7 @@ function validarRegistro(req, res, next) {
     });
   }
   
-  if (typeof email !== 'string' || !email.toLowerCase().includes('@gmail')) {
+  if (typeof email !== 'string' || !/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email)) {
     return res.status(400).json({
       error:
         'el email debe contener @gmail'
@@ -56,12 +56,12 @@ app.get('/registros', (req, res) => {
 
 app.post('/registros', validarRegistro, (req, res) => {
 
-  const { cedula, nombre, email, hora_llegada } = req.body;
+  const { cedula, nombre, email, hora_llegada, firma_base64 } = req.body;
 
   const result = db.prepare(`
-    INSERT INTO registros (cedula, nombre, email, hora_llegada)
-    VALUES (?, ?, ?, ?)
-  `).run(cedula, nombre, email, hora_llegada);
+    INSERT INTO registros (cedula, nombre, email, hora_llegada, firma_base64 )
+    VALUES (?, ?, ?, ?, ?)
+  `).run(cedula, nombre, email, hora_llegada, firma_base64);
 
   return res.status(201).json({ id: result.lastInsertRowid });
 });
@@ -83,13 +83,13 @@ res.sendStatus(204);
 });
 
 app.put('/registros/:id', async (req, res)=> {
- const { cedula, nombre, email, hora_llegada } = req.body;
+ const { cedula, nombre, email, hora_llegada, firma_base64 } = req.body;
 
 
- const registros = db.prepare('UPDATE registros SET cedula = ?, nombre = ?, email = ?, hora_llegada = ? WHERE id = ?').run(cedula, nombre, email, hora_llegada, req.params.id);
+ const registros = db.prepare('UPDATE registros SET cedula = ?, nombre = ?, email = ?, hora_llegada = ? = ? WHERE id = ?').run(cedula, nombre, email, hora_llegada, req.params.id);
 
 
-if (!cedula || !nombre || !email || !hora_llegada) {
+if (!cedula || !nombre || !email || !hora_llegada || !firma_base64 ) {
     return res.status(400).json({ error: 'Faltan campos requeridos' });
     
   }
@@ -110,7 +110,6 @@ if (!cedula || !nombre || !email || !hora_llegada) {
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
-
 
 
 
