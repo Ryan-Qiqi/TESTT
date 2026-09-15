@@ -52,7 +52,7 @@
   
  }
  html, body {
-  background-image: url('/img/xeeupj450uab1\ \(1\).webp') ;
+  background-image: url('/img/Ualett_Isotipo.png') ;
   background-size: cover;
   background-position: center;
   
@@ -73,7 +73,26 @@ min-height: 100vh;
 font-size: 30px;
 padding-right: 30px;
 padding-left: 30px ;
+ border-radius: 80px;
+}
 
+.trans {
+transition: opacity 0.4s ease, transform 0.4s ease;;
+
+
+}
+
+.oculto{
+  pointer-events: none;
+  transform: translateY(10px);
+  position: absolute;
+  opacity: 0;
+}
+
+.visible{
+  pointer-events: auto;
+  opacity: 1;
+  transform: translateY(0);
 }
 
 #minav{
@@ -84,6 +103,8 @@ padding-left: 30px ;
     margin-right: 10%;
     height:110px;
     border-radius: 20px;
+    display: flex;
+    flex-direction: row;
 }
 
 #imagen{
@@ -93,24 +114,40 @@ padding-left: 30px ;
 
 }
 
-#formularios{
-  background-color: rgb(255, 255, 255);
+#formularios button{
+  /* background-color: rgb(255, 255, 255); */
  
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);
 border-radius: 20px;
 margin-right: 10px;
 margin-left: 10px;
+
+
 }
-#forumariosi button{
-  display: flex;
-  align-items: center;
-}
+
 #formulariosi{
 padding-top:20px;
 padding-right: 10px;
 padding-left: 10px;
-
+display:flex;
+align-items: center;
 padding-bottom: 50px;
+transition: visibility 0s 0.5s, opacity 0.5s linear;
+ background-color: rgb(255, 255, 255);
+ 
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);
+border-radius: 20px;
+margin-right: 10px;
+margin-left: 55px;
+
+
+}
+
+#imagennn{
+  width: auto;
+  height: 80%;
+  padding-top: 20px;
+  padding-left: 20px;
 }
 
 /* .aja{
@@ -160,6 +197,7 @@ body{
 
   align-items: center;
   gap: 50px;
+ transition: width 2s;
 
 }
 #Registrate img{
@@ -173,13 +211,53 @@ height: 80px;
 width: 300px;
 font-size:40px;
 }
+.modal{ 
+  position:fixed;
+  inset:0;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index:10
+
+}
+.modal.visible{
+  opacity: 1;
+}
+.modal.oculto{
+  pointer-events:none;
+  
+}
+.modal-lacaja{
+  background:white;
+  padding: 24px 32;
+  border-radius:8px;
+  text-align: center;
+  transform: scale(0.9);
+  transition:transform 0.3 ease;
+}
+.modal.visible.modal-lacaja{
+  transform: scale 1;
+}
+
+/* #boton4{} */
+
+.campo{
+
+  transform: translateY(15px)
+}
+.campo .visible{
+  transform: scale(1); 
+}
 
 </style>
     <body class=".bg.dark">
       <header>
-       <nav id="minav"> 
-
-       </nav>
+       <!-- <nav id="minav"> 
+<img src="/img/Color=white.png" id="imagennn">
+       </nav> -->
        
          <section class="aja"> 
           <image  class="aja"></image>
@@ -230,22 +308,22 @@ font-size:40px;
     <div  id="formularios">
 
 
-      <div id="Registrate" >
-<img src="/img/unnamed.webp">
+      <div id="Registrate" class="trans visible" >
+<!-- <img src="/img/unnamed.webp"> -->
 <button
   type="button"
   class="btn btn-primary"
-id="boton4" onclick="cambiarpantalla1()">
-  Registrate
+id="boton47">
+  Register
 </button>
 
       </div>
       
-      <form  id="formulariosi" hidden>
-        <div class="form-row" id="messi">
+      <form id="formulariosi" class="trans oculto">
+        <div class="trans form-row" id="messi">
           <div class="col">
-            <label for="nombre" id="nombres" class="col-form-label">Name:</label>
-            <input type="text" class="form-control" id="nombre" placeholder="Full Name">
+            <label for="nombre" id="nombres" class="col-form-label ">Name:</label>
+            <input type="text" class="form-control campo" id="nombre" placeholder="Full Name">
           </div>
           <div class="col" id="segundo">
             <label for="cedula" id="cedulas" class="col-form-label">ID:</label>
@@ -259,6 +337,23 @@ id="boton4" onclick="cambiarpantalla1()">
         </div>
       </form>
       <!-- <img src="img/Ualettlogo.png" id="imagen"> -->
+    </div>
+
+    <div id="modals2" class="modal oculto">
+
+<div class="modal-lacaja">
+
+
+<p> SUCCESS</p>
+
+<button id="cerraelmodal"> Ok  </button>
+
+
+</div>
+
+
+
+
     </div>
    
 

@@ -6,8 +6,9 @@ document.addEventListener('DOMContentLoaded', () =>{
   
   
 });
-
-
+// const modals2 = document.getElementById('modals2')
+// const registro = document.getElementById('Registrate')
+// const formulario2 = document.getElementById('formulariosi')
 const contenedor = document.querySelector('tbody')
 const formu = document.querySelector('form')
 const nombre = document.getElementById('nombre')
@@ -21,12 +22,15 @@ const fecha = new Date()
 const pag1 = document.getElementById('formulariosi')
 const pag2 = document.getElementById('Registrate')
 
-console.log(pag1)
-  const cambiarpantalla1 = ()  =>{
-     pag1.hidden=false
-     pag2.hidden=true
-   console.log("hola")  
-  }
+const cambiarpantalla1 = () => {
+  pag2.classList.remove("visible")
+  pag2.classList.add("oculto")
+
+  pag1.classList.remove("oculto")
+  pag1.classList.add("visible")
+}
+
+document.getElementById("boton47").addEventListener("click", cambiarpantalla1)
 const formatter = new Intl.DateTimeFormat('en-US', {
   year: 'numeric',
   month: '2-digit',
@@ -131,6 +135,20 @@ const CreateData =  async () => {
       mostrarAlerta('error', msg);
     }
     
+// formulario2.classList.remove('viisble')
+// formulario2.classList.add('oculto')
+
+// modals2.classList.remove('oculto')
+//   document.getElementById('cerraelmodal').addEventListener('click',() => {
+
+// modals2.classList.remove('visible')
+// setTimeout(() => modalarticle.classList.add(oculto), 300)
+// formulario2.reset();
+
+
+
+  // })
+
     return data;
   } catch (err) {
     console.error(err);
