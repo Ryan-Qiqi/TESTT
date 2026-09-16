@@ -267,7 +267,7 @@ const CreateData =  async () => {
           body: JSON.stringify({
             nombre: algonuevo.nombre,
             cedula: algonuevo.cedula,
-            email: algonuevo.email,
+            email: algonuevo.email
      
             
           })})

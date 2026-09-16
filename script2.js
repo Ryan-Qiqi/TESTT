@@ -14,7 +14,9 @@ const formatter = new Intl.DateTimeFormat('en-US', {
 });
 const formattedDate = formatter.format(fecha).replace(/,/g, '');
   const modalarticle = new bootstrap.Modal(document.getElementById('modalarticle'))
-
+const nombre = document.getElementById('nombre')
+const cedula = document.getElementById('cedula')
+const email = document.getElementById('email')
 const contenedor = document.querySelector('tbody')
  
 const consultingdata = async() => {
@@ -32,6 +34,7 @@ const consultingdata = async() => {
 }catch(err){
     console.error(err);
 }
+
 };
 const tabladelcno = (data) => {
       console.log(data)
@@ -111,7 +114,7 @@ let idForm = 0;
      
       
       
-      const fila = e.target.parentNode.parentNode
+     const fila = e.target.closest('tr');
       const ID = fila.firstElementChild.innerHTML
       const nameform = fila.children[1].innerHTML
       const cedulas = fila.children[2].innerHTML
@@ -128,51 +131,75 @@ let idForm = 0;
       
     })
     
-    const Edit =  async () => {
+    const Edit = async () => {
       
-        
-        const algonuevo = {
-          nombre: document.getElementById ('nombre').value,
-          cedula: document.getElementById ('cedula').value,
-          email: document.getElementById ('email').value,
-   hora_llegada: new Date()
-        }
+      const algonuevo = {
+        nombre: document.getElementById ('nombre').value,
+        cedula: document.getElementById ('cedula').value,
+        email: document.getElementById ('email').value,
+        hora_llegada: new Date()
+      }
       
-
-try{  
-        const response = await fetch('http://localhost:8080/registros/'+ idForm ,{
-          method:"PUT",
-          headers:{
+      
+      try {
+        const response = await fetch('http://localhost:8080/registros/' + idForm, {
+          method: "PUT",
+          headers: {
             "Content-Type": "application/json"
           },
-          body: JSON.stringify({
-            nombre: algonuevo.nombre,
-            cedula: algonuevo.cedula,
-            email: algonuevo.email,
-           hora_llegada: algonuevo.hora_llegada
-
-           })
-        })
-        console.log('ok')
-        const data = await response.json();
+          body: JSON.stringify(algonuevo)
+        });
         
-        if (response.ok){
-          modalarticle.hide()
-          consultingdata();
+        
+        const texto = await response.text();
+        let data = {};
+        try {
+          data = texto ? JSON.parse(texto) : {};
+        } catch {
+          data = { mensaje: texto };
+        }
+        console.log("tumal")
 
-        }else{
-          const msg = data.error;
-          console.error(err)
+        if (!response.ok) {
+          throw new Error(data.error || data.mensaje || `Error HTTP ${response.status}`);
         }
-     
-          
-          
-          
-          return data
-        } catch (error) {
-          console.log(error)
-          
-        }
+
+        modalarticle.hide();
+        await consultingdata();
+        mostrarAlerta('exito', 'El registro fue editado correctamente.');
+        return data;
+      } catch (error) {
+        console.error('Error al editar:', error);
+        mostrarAlerta('error', error.message || 'No se pudo editar el registro.');
       }
+    }
+
+    document.getElementById('botoneditar').addEventListener('click', Edit);
 
       
+function mostrarAlerta(tipo, mensaje) {
+
+  const prev = document.getElementById('alerta-registro');
+  if (prev) prev.remove();
+
+  const div = document.createElement('div');
+  div.id = 'alerta-registro';
+  div.setAttribute('role', 'alert');
+  div.setAttribute('aria-live', 'assertive');
+
+ 
+  const clasebusS = tipo === 'exito' ? 'alert-success' : 'alert-danger';
+  div.className = `alert ${clasebusS} alert-dismissible fade show mt-3`;
+  div.innerHTML = `
+    <strong>${tipo === 'exito' ? '✔ Registro exitoso' : '✖ Error'}</strong> — ${mensaje}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+  `;
+
+
+  setTimeout(() => {
+    if (div && div.parentNode) {
+      div.classList.remove('show');
+      setTimeout(() => div.remove(), 300);
+    }
+  }, 5000);
+}
