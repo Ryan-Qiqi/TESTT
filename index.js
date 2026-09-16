@@ -25,7 +25,7 @@ function validarRegistro(req, res, next) {
   if (faltanCampos) {
     return res.status(400).json({
       error:
-        'Cédula, nombre, email y hora de llegada son requeridos. La cédula debe tener exactamente 11 dígitos.'
+        'Cédula, nombre, email, firma y hora de llegada son requeridos. La cédula debe tener exactamente 11 dígitos.'
     });
   }
 
@@ -83,13 +83,13 @@ res.sendStatus(204);
 });
 
 app.put('/registros/:id', async (req, res)=> {
- const { cedula, nombre, email, hora_llegada } = req.body;
+ const { cedula, nombre, email} = req.body;
 
 
- const registros = db.prepare('UPDATE registros SET cedula = ?, nombre = ?, email = ?, hora_llegada = ?  WHERE id = ?').run(cedula, nombre, email, hora_llegada, req.params.id);
+ const registros = db.prepare('UPDATE registros SET cedula = ?, nombre = ?, email = ?  WHERE id = ?').run(cedula, nombre, email,  req.params.id);
 
 
-if (!cedula || !nombre || !email || !hora_llegada ) {
+if (!cedula || !nombre || !email ) {
     return res.status(400).json({ error: 'Faltan campos requeridos' });
     
   }

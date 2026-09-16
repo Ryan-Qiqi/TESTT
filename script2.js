@@ -137,7 +137,7 @@ let idForm = 0;
         nombre: document.getElementById ('nombre').value,
         cedula: document.getElementById ('cedula').value,
         email: document.getElementById ('email').value,
-        hora_llegada: new Date()
+        
       }
       
       
@@ -151,6 +151,7 @@ let idForm = 0;
         });
         
         
+        console.log(response)
         const texto = await response.text();
         let data = {};
         try {
@@ -176,7 +177,6 @@ let idForm = 0;
 
     document.getElementById('botoneditar').addEventListener('click', Edit);
 
-      
 function mostrarAlerta(tipo, mensaje) {
 
   const prev = document.getElementById('alerta-registro');

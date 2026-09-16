@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () =>{
   
   
 });
-// const modals2 = document.getElementById('modals2')
+const modals2 = document.getElementById('modals2')
 // const registro = document.getElementById('Registrate')
 // const formulario2 = document.getElementById('formulariosi')
 const contenedor = document.querySelector('tbody')
@@ -125,7 +125,7 @@ const CreateData =  async () => {
     console.log(data);
     
     if (response.ok) {
-     
+       ctx.clearRect(0, 0, canvas.width, canvas.height);
       mostrarAlerta('exito', 'El registro fue creado correctamente.');
       consultingdata();
       toditoo.forEach(e => { e.value = ""; });
@@ -138,16 +138,16 @@ const CreateData =  async () => {
 // formulario2.classList.remove('viisble')
 // formulario2.classList.add('oculto')
 
-// modals2.classList.remove('oculto')
-//   document.getElementById('cerraelmodal').addEventListener('click',() => {
+modals2.classList.remove('oculto')
+  document.getElementById('cerraelmodal').addEventListener('click',() => {
 
-// modals2.classList.remove('visible')
-// setTimeout(() => modalarticle.classList.add(oculto), 300)
-// formulario2.reset();
+modals2.classList.remove('visible')
+setTimeout(() => modalarticle.classList.add(oculto), 300)
+formulario2.reset();
 
 
 
-  // })
+  })
 
     return data;
   } catch (err) {
@@ -334,7 +334,7 @@ if (!pintando) return;
       }
     
 
-document.getElementById("botoncrear").addEventListener("click", () => {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);})
+// document.getElementById("botoncrear").addEventListener("click", () => {
+
       
 
