@@ -74,7 +74,7 @@ function mostrarAlerta(tipo, mensaje) {
   const clasebusS = tipo === 'exito' ? 'alert-success' : 'alert-danger';
   div.className = `alert ${clasebusS} alert-dismissible fade show mt-3`;
   div.innerHTML = `
-    <strong>${tipo === 'exito' ? '✔ Registro exitoso' : '✖ Error'}</strong> — ${mensaje}
+    <strong>${tipo === 'exito' ? '✔ Registration successful' : '✖ Error'}</strong> — ${mensaje}
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
   `;
 
@@ -96,8 +96,8 @@ function mostrarAlerta(tipo, mensaje) {
 }
 // ───────────────────────────────────────────────────────────────────────────────
 
-const CreateData =  async () => {
-
+const CreateData =  async (event) => {
+event.preventDefault()
   opcion ='crear'
   const algonuevo = {
     nombre: document.getElementById ('nombre').value,
@@ -126,21 +126,21 @@ const CreateData =  async () => {
     
     if (response.ok) {
        ctx.clearRect(0, 0, canvas.width, canvas.height);
-      mostrarAlerta('exito', 'El registro fue creado correctamente.');
+      mostrarAlerta('exito', 'The record was created successfully..');
       consultingdata();
       toditoo.forEach(e => { e.value = ""; });
 
       modals2.classList.add('visible')
       modals2.classList.remove('oculto')    
-    pag2.classList.remove('visible')
-    pag2.classList.add('oculto')
+    pag2.classList.add('visible')
+    pag2.classList.remove('oculto')
 
-    pag1.classList.remove('oculto')
-    pag1.classList.add('visible')
+    pag1.classList.add('oculto')
+    pag1.classList.remove('visible')
 
     } else {
  
-      const msg = data.error || data.message || 'No se pudo crear el registro.';
+      const msg = data.error || data.message || 'The record could not be created..';
       mostrarAlerta('error', msg);
     }
     
@@ -149,7 +149,7 @@ const CreateData =  async () => {
 
 modals2.classList.remove('visible')
 setTimeout(() => modalarticle.classList.add(oculto), 300)
-formulario2.reset();
+pag1.reset();
 
 
 
@@ -158,7 +158,7 @@ formulario2.reset();
     return data;
   } catch (err) {
     console.error(err);
-    mostrarAlerta('error', 'No se pudo conectar con el servidor. Verifica que el backend esté activo.');
+    mostrarAlerta('error', 'Could not connect to the server. Verify that the backend is running.');
   }
 }
 
@@ -347,13 +347,13 @@ if (!pintando) return;
       
 
 
-const botonCrear = document.getElementById("botoncrear");
+// const botonCrear = document.getElementById("botoncrear");
 
-if (botonCrear) {
-  botonCrear.addEventListener("click", async (e) => {
-    e.preventDefault();
-    e.stopPropagation();
+// if (botonCrear) {
+//   botonCrear.addEventListener("click", async (e) => {
+//     e.preventDefault();
+//     e.stopPropagation();
     
-    await CreateData();
-  });
-}
+//     await CreateData();
+//   });
+// }

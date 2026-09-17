@@ -41,14 +41,77 @@
 }
 #emails, #nombres, #cedulas{
   font-size: 25px;
-  border-radius: 50%;
+bottom:30px;
+
+
+    
+}
+#nombre:focus ~ #nombres {
+top: -155px;
+ position: relative;
+ 
+   right: -20px; 
+  padding: 0 10px;
+  background-color: white;
+
+
+} 
+
+
+#cedula:focus ~ #cedulas {
+top: -170px;
+ position: relative;
+ 
+   right: -20px; 
+  padding: 0 10px;
+  background-color: white;
+
+
+} 
+#email:focus ~ #emails {
+top: -170px;
+ position: relative;
+ 
+   right: -20px; 
+  padding: 0 10px;
+  background-color: white;
+
+
+} 
+#emails{
+   position: relative;
+  top:-119px;
+  right: -20px; 
+  transition: 0.3s;
+}
+
+#cedulas{
+   position: relative;
+  top:-119px;
+  right: -20px; 
+  transition: 0.3s;
+
+}
+#nombres{
+
+  position: relative;
+  top: -105px;
+  right: -20px; 
+  transition: 0.3s;
+}
+#email:focus , #nombre:focus , #cedula:focus {
+font-size:35px;
+height: 100px;
 }
  #nombre, #cedula, #email{
-  font-size: 30px;
-    border-radius: 60px;
+  font-size: 35px;
+  height:80px;
+    border-radius: 30px;
    padding-bottom: 1px;
    width: 500px;
    margin-bottom: 55px;
+  /* transition: font-size 0.3s ease, */
+
   
  }
  html, body {
@@ -56,9 +119,9 @@
   background-size: auto;
   background-position: center;
   background-repeat:no-repeat;
-  overflow:hidden;
+
+  max-height: 100%;
 background-color: #043dc7;
- max-height: 100%;
  }
 
  
@@ -74,6 +137,7 @@ font-size: 30px;
 padding-right: 30px;
 padding-left: 30px ;
  border-radius: 80px;
+ margin-top: 50px;
 }
 
 .trans {
@@ -133,12 +197,11 @@ align-items: center;
 padding-bottom: 50px;
 transition: visibility 0s 0.5s, opacity 0.5s linear;
  background-color: rgb(255, 255, 255);
-
  
   /* box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3); */
-border-radius: 50px;
+border-radius: 90px;
 margin-right: 80px;
-margin-top: 80px;
+margin-top: 200px;
 margin-left: 80px;
 
 
@@ -252,7 +315,6 @@ margin-top:800px;
   transform: scale 1;
 }
 
-/* #boton4{} */
 #modals2 button:hover{
   background: rgb(0, 0, 190);
   transform: translateY(-2px);
@@ -288,13 +350,7 @@ margin-top:800px;
 </style>
     <body class=".bg.dark">
       <header>
-       <!-- <nav id="minav"> 
-<img src="/img/Color=white.png" id="imagennn">
-       </nav> -->
-       
-         <section class="aja"> 
-          <image  class="aja"></image>
-         </section>  
+  
 
         </header>
 
@@ -311,7 +367,7 @@ margin-top:800px;
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
-                <form>
+                
                   <!-- <div class="mb-3">
                     <label for="nombre" class="col-form-label">nombre:</label>
                     <input type="text" class="form-control" id="nombre">
@@ -355,16 +411,16 @@ id="boton47">
       <form id="formulariosi" class="trans oculto">
         <div class="trans form-row" id="messi">
           <div class="col">
-            <label for="nombre" id="nombres" class="col-form-label ">Full Name:</label>
-            <input type="text" class="form-control campo" id="nombre" placeholder="Full Name">
+            <input type="text" class="form-control campo" id="nombre" >
+            <label for="nombre" id="nombres" class="col-form-label ">Full Name</label>
           </div>
           <div class="col" id="segundo">
-            <label for="cedula" id="cedulas" class="col-form-label">ID:</label>
-            <input type="number" class="form-control" id="cedula" placeholder="Your ID">
+            <input type="number" class="form-control" id="cedula">
+            <label for="cedula" id="cedulas" class="col-form-label">ID</label>
           </div>
           <div class="col" id="tercero" >
+            <input type="text" class="form-control" id="email" >
             <label for="email" id= "emails" class="col-form-label">Gmail:</label>
-            <input type="text" class="form-control" id="email" placeholder="example@example.com">
           </div>
 
 <canvas id="firmaconv" width="400" height="200" style="border:1px solid #000;"></canvas>
@@ -428,9 +484,9 @@ id="boton47">
         </main>
         
         <footer id="footer">
-      
+       
         </footer>
-        <!-- Bootstrap JavaScript Bundle (includes Popper) -->
+        
         <script
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
