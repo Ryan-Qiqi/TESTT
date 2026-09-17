@@ -52,12 +52,12 @@
   
  }
  html, body {
-  background-image: url('/img/Ualett_Isotipo.png') ;
-  background-size: cover;
+  background-image: url('/img/icon.webp') ;
+  background-size: auto;
   background-position: center;
-  
-
-min-height: 100vh;
+  background-repeat:no-repeat;
+  overflow:hidden;
+background-color: #043dc7;
  max-height: 100%;
  }
 
@@ -122,7 +122,6 @@ border-radius: 20px;
 margin-right: 10px;
 margin-left: 10px;
 
-
 }
 
 #formulariosi{
@@ -133,7 +132,7 @@ display:flex;
 align-items: center;
 padding-bottom: 50px;
 transition: visibility 0s 0.5s, opacity 0.5s linear;
- background-color: rgb(0, 62, 233);
+ background-color: rgb(255, 255, 255);
 
  
   /* box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3); */
@@ -153,23 +152,7 @@ margin-left: 80px;
   padding-left: 20px;
 }
 
-/* .aja{
 
-    height:80vh;
-   
-    display:flex;
-    justify-content: center;
-    width: 100%;
-
-}
-
- .aja::before{
-    content:"";
-    position:absolute;inset:0;
-    background:linear-gradient(180deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,0) 35%);
-    pointer-events:none;
-  } */
-  
 
 body{
   
@@ -213,6 +196,20 @@ body{
 height: 80px;
 width: 300px;
 font-size:40px;
+margin-top:800px;
+}
+#modals2 p{
+  font-size: 22px;
+  font-weight: 600;
+  color: rgb(0, 0, 151);
+  margin-bottom: 25px;
+}
+#modals2 .icono-exito svg{
+  width: 45px;
+  height: 45px;
+  stroke: white;
+  stroke-width: 3;
+  fill: none;
 }
 #modals2{ 
   position:fixed;
@@ -232,6 +229,17 @@ font-size:40px;
   pointer-events:none;
   
 }
+#modals2 button{
+  background: rgb(0, 0, 151);
+  color: white;
+  border: none;
+  padding: 12px 45px;
+  border-radius: 50px;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
 #modals2-lacaja{
   background:white;
   padding: 24px 32;
@@ -245,6 +253,29 @@ font-size:40px;
 }
 
 /* #boton4{} */
+#modals2 button:hover{
+  background: rgb(0, 0, 190);
+  transform: translateY(-2px);
+}#modals2 .icono-exito{
+  width: 90px;
+  height: 90px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  background: rgb(0, 0, 151);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#modals2 .modal-lacaja{
+  background: #fff;
+  padding: 40px 50px;
+  border-radius: 24px;
+  text-align: center;
+  transform: scale(0.85);
+  transition: transform 0.3s ease;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+  max-width: 350px;
+}                                                                                                                                                                            
 
 .campo{
 
@@ -340,21 +371,23 @@ id="boton47">
 
 
           
-          <button type="button" class="btn btn-primary"   id="botoncrear" onclick="CreateData()" >Create</button>
+          <button type="button" class="btn btn-primary"   id="botoncrear"  >Create</button>
         </div>
       </form>
       <!-- <img src="img/Ualettlogo.png" id="imagen"> -->
     </div>
 
-    <div id="modals2" class="modal oculto">
-
-<div class="modal-lacaja">
-
-
-<p> SUCCESS</p>
-
-<button id="cerraelmodal"> Ok  </button>
-
+<div id="modals2" class="modal oculto">  
+  <div class="modal-lacaja">   
+     <div class="icono-exito">      
+      <svg viewBox="0 0 24 24">   
+             <path d="M20 6L9 17l-5-5" />    
+              </svg>  
+              </div> 
+                 <p>¡Registro exitoso!</p>    
+                 <button id="cerraelmodal">Ok</button> 
+                 </div>
+                </div>
 
 </div>
 

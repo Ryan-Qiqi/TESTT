@@ -97,7 +97,7 @@ function mostrarAlerta(tipo, mensaje) {
 // ───────────────────────────────────────────────────────────────────────────────
 
 const CreateData =  async () => {
-  
+
   opcion ='crear'
   const algonuevo = {
     nombre: document.getElementById ('nombre').value,
@@ -129,16 +129,22 @@ const CreateData =  async () => {
       mostrarAlerta('exito', 'El registro fue creado correctamente.');
       consultingdata();
       toditoo.forEach(e => { e.value = ""; });
+
+      modals2.classList.add('visible')
+      modals2.classList.remove('oculto')    
+    pag2.classList.remove('visible')
+    pag2.classList.add('oculto')
+
+    pag1.classList.remove('oculto')
+    pag1.classList.add('visible')
+
     } else {
  
       const msg = data.error || data.message || 'No se pudo crear el registro.';
       mostrarAlerta('error', msg);
     }
     
-// formulario2.classList.remove('viisble')
-// formulario2.classList.add('oculto')
 
-modals2.classList.remove('oculto')
   document.getElementById('cerraelmodal').addEventListener('click',() => {
 
 modals2.classList.remove('visible')
@@ -155,6 +161,8 @@ formulario2.reset();
     mostrarAlerta('error', 'No se pudo conectar con el servidor. Verifica que el backend esté activo.');
   }
 }
+
+
     const tabladelcno = (data) => {
       console.log(data)
       let resultados = '';
@@ -338,3 +346,14 @@ if (!pintando) return;
 
       
 
+
+const botonCrear = document.getElementById("botoncrear");
+
+if (botonCrear) {
+  botonCrear.addEventListener("click", async (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    
+    await CreateData();
+  });
+}

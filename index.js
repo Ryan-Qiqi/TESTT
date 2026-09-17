@@ -29,13 +29,6 @@ function validarRegistro(req, res, next) {
     });
   }
 
-  if (typeof cedula !== 'string' || !/^[0-9]{11}$/.test(cedula)) {
-
-    return res.status(400).json({
-      error:
-      'La cédula debe contener exactamente 11 dígitos, sin guiones, espacios ni letras.'
-    });
-  }
   
   if (typeof email !== 'string' || !/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email)) {
     return res.status(400).json({
@@ -94,13 +87,13 @@ if (!cedula || !nombre || !email ) {
     
   }
 
-  if (typeof cedula !== 'string' || !/^[0-9]{11}$/.test(cedula)) {
+  // if (typeof cedula !== 'string' || !/^[0-9]{11}$/.test(cedula)) {
 
-    return res.status(400).json({
-      error:
-      'La cédula debe contener exactamente 11 dígitos, sin guiones, espacios ni letras.'
-    });
-  }
+  //   return res.status(400).json({
+  //     error:
+  //     'La cédula debe contener exactamente 11 dígitos, sin guiones, espacios ni letras.'
+  //   });
+  // }
   
 
 
